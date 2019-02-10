@@ -1,7 +1,7 @@
 defmodule Geo.Mixfile do
   use Mix.Project
 
-  @version File.read!("VERSION") |> String.strip
+  @version File.read!("VERSION") |> String.trim()
 
   def project do
     [app: :geo,
@@ -9,12 +9,11 @@ defmodule Geo.Mixfile do
      source_url: "https://github.com/tappsi/geo",
      homepage_url: "https://github.com/tappsi/geo",
      version: @version,
-     elixir: "~> 1.4",
+     elixir: "~> 1.8",
      description: description(),
      docs: docs(),
      package: package(),
      deps: deps(),
-     test_coverage: [tool: ExCoveralls],
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod]
   end
@@ -43,9 +42,6 @@ defmodule Geo.Mixfile do
 
   defp deps do
     [{:rstar, github: "armon/erl-rstar"},
-
-     # Development
-     {:excoveralls, "> 0.0.0", only: :test},
 
      # Documentation
      {:ex_doc, "> 0.0.0", only: :docs},
